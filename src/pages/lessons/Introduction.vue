@@ -1,7 +1,7 @@
 <template>
     <v-container class="">
-        <v-row>
-            <v-col cols="12" md="12" sm="12">
+        <v-row class="px-5 py-5 px-md-16 py-md-5">
+            <v-col cols="12" md="12" sm="12"  > 
                 <h4 class="text-h5 font-weight-bold mb-4">Welcome to Miguro.com – Learn Japanese, Experience Japan</h4>
                 <p>Ready to explore the beauty of the Japanese language and culture—your way? At Miguro.com, we blend
                     the power of AI with a vibrant learning community to give you a smart, social, and immersive

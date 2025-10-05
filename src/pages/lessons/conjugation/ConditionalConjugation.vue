@@ -65,7 +65,7 @@
                         </li>
                     </ul>
                 </v-col>
-                <v-alert icon="$vuetify" title="Additional Notes">
+                <v-alert icon="mdi-information" title="Additional Notes">
                     <ul class="mx-2 mx-md-6">
                         <li><b>ば-form</b> is more logical or theoretical.</li>
                         <li><b>たら-form</b> is more natural and flexible in conversation.</li>

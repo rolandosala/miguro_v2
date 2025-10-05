@@ -25,34 +25,34 @@
 <script setup lang="ts">
 const accordion = [
     {
-        id: 'collapseOne', title: '1. の as Possession', description: 'Think of の like the apostrophe ’s in English. It shows that something belongs to someone. Structure: [Owner] の [Possession]',
+       title: '1. の as Possession', description: 'Think of の like the apostrophe ’s in English. It shows that something belongs to someone. Structure: [Owner] の [Possession]',
         example: [
             { kana: 'わたし の ほん', translation: 'my book' },
             { kana: 'たなかさん の かさ', translation: 'Tanaka\'s umbrella' },
             { kana: 'がくせい の ノート', translation: 'a student\'s notebook' },
-        ], collapsed: 'collapsed', show: '', note: 'Note: Just like English, the owner comes first, followed by what is owned.'
+        ], note: 'Note: Just like English, the owner comes first, followed by what is owned.'
     },
     {
-        id: 'collapseTwo', title: '2. の to Connect or Describe Nouns', description: 'の can also be used to make compound nouns or to describe something using another noun. Structure: [Descriptive noun] の [Main noun]',
+       title: '2. の to Connect or Describe Nouns', description: 'の can also be used to make compound nouns or to describe something using another noun. Structure: [Descriptive noun] の [Main noun]',
         example: [
             { kana: 'にほん の ぶんか', translation: 'Japanese culture' },
             { kana: 'さくら の き', translation: 'a cherry blossom tree (literally, “tree of cherry blossom”)' },
             { kana: 'おちゃ の カップ', translation: 'a teacup' },
-        ], collapsed: 'collapsed', show: '', note: 'Note: In this case, the noun before の adds more information or context to the noun after it.'
+        ], note: 'Note: In this case, the noun before の adds more information or context to the noun after it.'
     },
     {
-        id: 'collapseThree', title: '3. の for Relationships or Categories', description: 'You can also use の to indicate relationships, locations, or categories. Structure: [Descriptive noun] の [Main noun]',
+        title: '3. の for Relationships or Categories', description: 'You can also use の to indicate relationships, locations, or categories. Structure: [Descriptive noun] の [Main noun]',
         example: [
             { kana: 'わたし の ともだち', translation: 'my friend' },
             { kana: 'がっこう の せんせい', translation: 'a teacher at a school' },
             { kana: 'いぬ の えさ', translation: 'dog food (literally, “food for dogs”)' },
-        ], collapsed: 'collapsed', show: '', note: ''
+        ], note: ''
     },
     {
-        id: 'collapseFour', title: '4. の in Questions', description: 'When you\'re asking a question and want to know who owns something or what something is related to, の still works the same.',
+        title: '4. の in Questions', description: 'When you\'re asking a question and want to know who owns something or what something is related to, の still works the same.',
         example: [
             { kana: 'これは だれ の かばん ですか？', translation: 'Whose bag is this?' },
-        ], collapsed: 'collapsed', show: '', note: ''
+        ], note: ''
     },
 ]
 </script>

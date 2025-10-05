@@ -23,12 +23,11 @@
             </v-col>
         </v-row>
     </v-container>
-
 </template>
 <script setup lang="ts">
 const accordion = [
     {
-        id: 'collapseOne', title: '1. 「で」 as the Place of Action', description: 'When you want to say where something happens, use 「で」. Pattern: [Place] + で + [Action]',
+        title: '1. 「で」 as the Place of Action', description: 'When you want to say where something happens, use 「で」. Pattern: [Place] + で + [Action]',
         example: [
             {
                 kana: '学校で勉強します。', romaji: 'Gakkō de benkyō shimasu. ', translation: 'I study at school.', breakdown: [
@@ -45,10 +44,10 @@ const accordion = [
                     { word: '会いました (aimashita)', meaning: 'met (past tense of 会う)' },
                 ], note: 'Function of で: Indicates where the meeting took place — at the café.'
             },
-        ], collapsed: 'collapsed', show: '', note: 'Tip: Don’t confuse this with the particle に, which is used for destinations or existence (like “I went to school” → 学校に行きました).'
+        ], note: 'Tip: Don’t confuse this with the particle に, which is used for destinations or existence (like “I went to school” → 学校に行きました).'
     },
     {
-        id: 'collapseTwo', title: '2. 「で」 as the Means or Tool', description: 'Use 「で」 to describe how or with what something is done. Pattern: [Tool/Method] + で + [Action]',
+       title: '2. 「で」 as the Means or Tool', description: 'Use 「で」 to describe how or with what something is done. Pattern: [Tool/Method] + で + [Action]',
         example: [
             {
                 kana: 'バスで行きます。', romaji: 'Basu de ikimasu.', translation: 'I go by bus.', breakdown: [
@@ -71,10 +70,10 @@ const accordion = [
                     { word: '話しましょう (hanashimashou)', meaning: 'let’s speak' },
                 ], note: 'Function of で: Shows the language being used as the method of communication — in Japanese.'
             },
-        ], collapsed: 'collapsed', show: '', note: 'Think of 「で」 here as "using" or "by means of."'
+        ], note: 'Think of 「で」 here as "using" or "by means of."'
     },
     {
-        id: 'collapseThree', title: '3. 「で」 as the Cause or Reason', description: 'In some cases, 「で」 can express a cause or reason, usually with emotions or natural events. Pattern: [Reason] + で + [Result]',
+       title: '3. 「で」 as the Cause or Reason', description: 'In some cases, 「で」 can express a cause or reason, usually with emotions or natural events. Pattern: [Reason] + で + [Result]',
         example: [
             {
                 kana: '病気で学校を休みました。', romaji: 'Byōki de gakkō o yasumimashita.', translation: 'I missed school because of illness.', breakdown: [
@@ -93,7 +92,7 @@ const accordion = [
                 ], note: 'Function of で: Explains why the train stopped — because of the earthquake.'
             },
 
-        ], collapsed: 'collapsed', show: '', note: ''
+        ], note: ''
     },
 ]
 </script>

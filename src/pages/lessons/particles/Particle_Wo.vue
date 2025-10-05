@@ -18,7 +18,7 @@
                                 example.romaji }}<br />Translation: {{ example.translation }}</v-list-item>
                 </v-col>
                 <v-col cols="12" md="10" sm="12">
-                    <v-alert icon="$vuetify" title="Quick Tips">
+                    <v-alert icon="mdi-information" title="Quick Tips">
                         <v-list-item><b>を</b> always comes right after the object.</v-list-item>
                         <v-list-item>Even if the subject is dropped (which is common in Japanese), <b>を</b> still marks
                             the object

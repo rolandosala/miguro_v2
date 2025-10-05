@@ -53,7 +53,7 @@
                         </tbody>
                     </v-table>
                 </v-col>
-                <v-alert icon="$vuetify" title="Additional Notes">
+                <v-alert icon="mdi-information" title="Additional Notes">
                     <ul>
                         <li><b>Casual vs. Polite:</b>The casual imperative is direct and often used with close friends
                             or in

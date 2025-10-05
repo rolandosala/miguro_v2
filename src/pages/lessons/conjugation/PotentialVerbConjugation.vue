@@ -57,7 +57,7 @@
                         <span v-for="ex in cases.examples">{{ ex.jp }}<br />{{ ex.romaji }}<br />{{ ex.en
                             }}<br /></span>
                     </v-list-item>
-                    <v-alert icon="$vuetify" title="Summary">
+                    <v-alert icon="mdi-information" title="Summary">
                         <v-list-item><b>Group 1 (U-verbs)</b>: Replace -u with -eru.</v-list-item>
                         <v-list-item><b>Group 2 (Ru-verbs)</b>: Replace -ru with -rareru.</v-list-item>
                         <v-list-item><b>Group 3 (Irregular verbs)</b>: する becomes できる, and 来る becomes

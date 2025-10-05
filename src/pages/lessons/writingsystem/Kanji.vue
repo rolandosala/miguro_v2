@@ -1,7 +1,7 @@
 <template>
-    <v-container>
+    <v-container class="px-5 py-5 px-md-16 py-md-5">
         <v-row>
-            <v-col cols="12" md="12" sm="12" class="px-5 py-5 px-md-16 py-md-5">
+            <v-col cols="12" md="12" sm="12" >
                 <h4 class="text-h5 font-weight-bold mb-4">Introduction to Kanji</h4>
                 <p>Kanji (漢字) are the adopted Chinese characters used in the Japanese writing system. Alongside
                     hiragana
@@ -55,7 +55,7 @@
                         Wednesday)</v-list-item>
                     <v-list-item class="mx-4">Kun’yomi: mizu (used when standing alone)</v-list-item>
                 </v-list>
-                <v-alert icon="$vuetify" title="Tips for Learning Kanji">
+                <v-alert icon="mdi-information" title="Tips for Learning Kanji">
                     <v-list-item>Learn kanji in context – with vocabulary, not just as isolated
                         characters.</v-list-item>
                     <v-list-item>Use mnemonics – create stories or visuals to remember meanings.</v-list-item>
@@ -68,67 +68,4 @@
             </v-col>
         </v-row>
     </v-container>
-
 </template>
-<script setup>
-import { ref } from 'vue'
-const dialog = ref(false)
-const selectedChar = ref('')
-const characters = ref([
-    { character: ['ア (a)', 'イ (i)', 'ウ (u)', 'エ (e)', 'オ (o)'] },
-    { character: ['カ (ka)', 'キ (ki)', 'ク (ku)', 'ケ (ke)', 'コ (ko)'] },
-    { character: ['サ (sa)', 'シ (shi)', 'ス (su)', 'セ (se)', 'ソ (so)'] },
-    { character: ['タ (ta)', 'チ (chi)', 'ツ (tsu)', 'テ (te)', 'ト (to)'] },
-    { character: ['ナ (na)', 'ニ (ni)', 'ヌ (nu)', 'ネ (ne)', 'ノ (no)'] },
-    { character: ['ハ (ha)', 'ヒ (hi)', 'フ (fu)', 'ヘ (he)', 'ホ (ho)'] },
-    { character: ['マ (ma)', 'ミ (mi)', 'ム (mu)', 'メ (me)', 'モ (mo)'] },
-    { character: ['ラ (ra)', 'リ (ri)', 'ル (ru)', 'レ (re)', 'ロ (ro)'] },
-    { character: ['ヤ (ya)', '-', 'ユ (yu)', '-', 'ヨ (yo)'] },
-    { character: ['ワ (wa)', '-', '-', '-', 'ヲ (wo)'] },
-    { character: ['ん (n)', '-', '-', '-', '-'] },
-])
-const dakuten = ref([
-    { character: ['ガ (ga)', 'ギ (gi)', 'グ (gu)', 'ゲ (ge)', 'ゴ (go)'] },
-    { character: ['ザ (za)', 'ジ (ji)', 'ズ (zu)', 'ゼ (ze)', 'ゾ (zo)'] },
-    { character: ['ダ (da)', 'ヂ (ji/di)', 'ヅ (zu/du)', 'デ (de)', 'ド (do)'] },
-    { character: ['バ (ba)', 'ビ (bi)', 'ブ (bu)', 'ベ (be)', 'ボ (bo)'] },
-    { character: ['パ (pa)', 'ピ (pi)', 'プ (pu)', 'ペ (pe)', 'ポ (po)'] },
-])
-const yoonCharacters = ref([
-    { character: ['キャ (kya)', 'キュ (kyu)', 'キョ (kyo)'] },
-    { character: ['ギャ (gya)', 'ギュ (gyu)', 'ギョ (gyo)'] },
-    { character: ['シャ (sha)', 'シュ (shu)', 'ショ (sho)'] },
-    { character: ['ジャ (ja)', 'ジュ (ju)', 'ジョ (jo)'] },
-    { character: ['チャ (cha)', 'チュ (chu)', 'チョ (cho)'] },
-    { character: ['ニャ (nya)', 'ニュ (nyu)', 'ニョ (nyo)'] },
-    { character: ['ヒャ (hya)', 'ヒュ (hyu)', 'ヒョ (hyo)'] },
-    { character: ['ビャ (bya)', 'ビュ (byu)', 'ビョ (byo)'] },
-    { character: ['ピャ (pya)', 'ピュ (pyu)', 'ピョ (pyo)'] },
-    { character: ['ミャ (mya)', 'ミュ (myu)', 'ミョ (myo)'] },
-    { character: ['リャ (rya)', 'リュ (ryu)', 'リョ (ryo)'] },
-])
-const otherCharacters = ([
-    { character: 'ー', usage: 'Long vowel mark (e.g., コーヒー "coffee")' },
-    { character: 'ヴ', usage: '"V" sound, often used in foreign words (e.g., ヴァイオリン for "violin")' },
-    { character: 'ヵ / ヶ', usage: 'Small versions of カ and ケ, used in counters and place names' },
-    { character: 'ㇰ, ㇱ, etc.', usage: 'Rare small katakana for Ainu or linguistic use (not commonly used in standard Japanese)' },
-])
-const tips = [
-    "Start with recognition – Learn to read and pronounce Katakana before worrying about writing it.",
-    "Use flashcards or apps – Consistent repetition helps with memorization.",
-    "Spot it in the wild – Katakana is everywhere in Japan. Try reading signs, menus, or packaging.",
-    "Practice with real words – Learning words like コーヒー (coffee) and パン (bread) makes it more fun and practical.",
-    "Compare with Hiragana – It’s useful to understand the difference and when each is used."
-]
-const toggleDialog = (char) => {
-    dialog.value = true
-    selectedChar.value = char
-}
-const splitChar = (str) => {
-    const match = str.match(/^(.+?)\s*\((.+)\)$/);
-    if (match) {
-        return { kana: match[1], romaji: match[2] };
-    }
-    return { kana: str, romaji: "" };
-};
-</script>

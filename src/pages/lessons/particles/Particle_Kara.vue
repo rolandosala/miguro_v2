@@ -24,7 +24,7 @@
                         Romaji: Eki kara ie made arukimasu.<br />
                         Translation: "I walk from the station to my house."
                     </v-list-item>
-                    <v-alert icon="$vuetify" title="Note:">
+                    <v-alert icon="mdi-information" title="Note:">
                         <p>Often paired with まで (made), which means "until" or "to"!</p>
                     </v-alert>
                 </v-col>

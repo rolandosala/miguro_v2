@@ -78,7 +78,7 @@
                         <strong>行きます</strong> (いきます) – <em>(ikimasu)</em> – I will go <br />
                         <strong>見ます</strong> (みます) – <em>(mimasu)</em> – I will see <br />
                     </v-list-item>
-                    <v-alert icon="$vuetify" title="Note">
+                    <v-alert icon="mdi-information" title="Note">
                         <p>To make questions in the polite form, simply add the question marker **か** (ka) at the end of
                             the
                             sentence.

@@ -1,7 +1,7 @@
 <template>
-    <v-container>
+    <v-container class="px-5 py-5 px-md-16 py-md-5">
         <v-row>
-            <v-col cols="12" md="12" sm="12" class="px-5 py-5 px-md-16 py-md-5">
+            <v-col cols="12" md="12" sm="12" >
                 <h4 class="text-h5 font-weight-bold mb-4">What is Katakana (カタカナ)?</h4>
                 <p class="mb-4">Katakana is one of the three writing systems used in Japanese, alongside Hiragana (ひらがな)
                     and
@@ -24,38 +24,11 @@
             <v-col cols="12" md="12" sm="12">
                 <v-row>
                     <v-col cols="12" md="6" sm="12">
-                        <v-card title="Katakana Characters" flat>
-                            <v-table title="table">
-                                <tbody>
-                                    <tr v-for="item in characters">
-                                        <td v-for="char in item.character" :key="char" @click="toggleDialog(char)"
-                                            class="cursor-pointer hover:bg-red-100">{{ char }}</td>
-                                    </tr>
-                                </tbody>
-                            </v-table>
-                        </v-card>
-                        <v-card title="Dakuten Characters" flat>
-                            <v-table title="table">
-                                <tbody>
-                                    <tr v-for="item in dakuten">
-                                        <td v-for="char in item.character" :key="char" @click="toggleDialog(char)"
-                                            class="cursor-pointer hover:bg-red-100">{{ char }}</td>
-                                    </tr>
-                                </tbody>
-                            </v-table>
-                        </v-card>
+                        <CharacterInformationComponent :characters="characters" :title="'Katakana Characters'" />
+                        <CharacterInformationComponent :characters="dakuten" :title="'Dakuten Characters'" />
                     </v-col>
                     <v-col cols="12" md="6" sm="12">
-                        <v-card title="Yoon Characters" flat>
-                            <v-table title="table">
-                                <tbody>
-                                    <tr v-for="item in yoonCharacters">
-                                        <td v-for="char in item.character" :key="char" @click="toggleDialog(char)"
-                                            class="cursor-pointer hover:bg-red-100">{{ char }}</td>
-                                    </tr>
-                                </tbody>
-                            </v-table>
-                        </v-card>
+                        <CharacterInformationComponent :characters="yoonCharacters" :title="'Yoon Characters'" />
                     </v-col>
                 </v-row>
             </v-col>
@@ -81,7 +54,7 @@
 
                     Ready to dive in? Check out our [Katakana Practice Tools] and [Interactive Flashcards] to get
                     started!</p>
-                <v-alert icon="$vuetify" title="Tips for Learning Katakana" class="mt-4">
+                <v-alert icon="mdi-information" title="Tips for Learning Katakana" class="mt-4">
                     <v-list-item v-for="(step, index) in tips" :key="index">
                         <template #prepend>
                             <strong>{{ index + 1 }}. </strong>
@@ -92,36 +65,9 @@
             </v-col>
         </v-row>
     </v-container>
-
-
-
-    <v-dialog v-model="dialog" max-width="400">
-        <v-card class="pa-5">
-            <v-card-title>Character Information</v-card-title>
-            <v-row>
-                <v-col cols="12" md="8" sm="6">
-                    <v-card variant="outlined">
-                        <v-card-text>
-                            <p class="text-h1 font-weight-bold text-center">{{ splitChar(selectedChar).kana }}</p>
-                        </v-card-text>
-                    </v-card>
-                </v-col>
-                <v-col cols="12" md="4" sm="6">
-                    Romaji:
-                    <p class="text-h4">{{ splitChar(selectedChar).romaji }}</p>
-                </v-col>
-            </v-row>
-            <v-card-actions>
-                <v-spacer />
-                <v-btn color="primary" @click="dialog = false">Close</v-btn>
-            </v-card-actions>
-        </v-card>
-    </v-dialog>
 </template>
 <script setup>
 import { ref } from 'vue'
-const dialog = ref(false)
-const selectedChar = ref('')
 const characters = ref([
     { character: ['ア (a)', 'イ (i)', 'ウ (u)', 'エ (e)', 'オ (o)'] },
     { character: ['カ (ka)', 'キ (ki)', 'ク (ku)', 'ケ (ke)', 'コ (ko)'] },
@@ -168,15 +114,4 @@ const tips = [
     "Practice with real words – Learning words like コーヒー (coffee) and パン (bread) makes it more fun and practical.",
     "Compare with Hiragana – It’s useful to understand the difference and when each is used."
 ]
-const toggleDialog = (char) => {
-    dialog.value = true
-    selectedChar.value = char
-}
-const splitChar = (str) => {
-    const match = str.match(/^(.+?)\s*\((.+)\)$/);
-    if (match) {
-        return { kana: match[1], romaji: match[2] };
-    }
-    return { kana: str, romaji: "" };
-};
 </script>

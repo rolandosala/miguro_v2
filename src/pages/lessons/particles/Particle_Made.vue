@@ -16,7 +16,7 @@
                     <v-list-item class="mx-6" v-for="(example, index) in data.example"><b>{{ example.kana
                             }}</b><br />Romaji: {{
                                 example.romaji }}<br />Translation: {{ example.translation }}</v-list-item>
-                    <v-alert icon="$vuetify" title="Note:" v-if="data.note != ''">
+                    <v-alert icon="mdi-information" title="Note:" v-if="data.note != ''">
                         <v-list-item>{{ data.note }}</v-list-item>
                     </v-alert>
                 </v-col>

@@ -1,24 +1,15 @@
 <template>
     <v-app-bar color="primary">
-        <v-app-bar-nav-icon variant="text" @click="drawer = !drawer"></v-app-bar-nav-icon>
-        <v-toolbar-title>Miguro</v-toolbar-title>
-        <v-col cols="12" md="4" sm="6" class="d-flex justify-space-around" color="surface-dark">
-            <v-card-text color="surface-light">
-                <v-text-field  append-inner-icon="mdi-magnify" density="compact"
-                    label="Search Dictionary" variant="solo" hide-details single-line 
-                    width="400"></v-text-field>
-            </v-card-text>
-        </v-col>
-        <v-col cols="12" md="2" sm="6" color="surface-dark">
-            <v-btn prepend-icon="$vuetify" variant="tonal" block>
-                AI Chatbot
-            </v-btn>
-        </v-col>
-        <v-col cols="12" md="2" sm="6" color="surface-dark">
-            <v-btn prepend-icon="$vuetify" variant="tonal" block>
-                Community
-            </v-btn>
-        </v-col>
+        <v-row class="d-flex flex-row">
+            <v-col cols="2" md="8" sm="8" class="d-flex flex-row align-center">
+                <v-app-bar-nav-icon variant="text" @click="drawer = !drawer"></v-app-bar-nav-icon>
+                <v-toolbar-title class="mx-10">Miguro.com</v-toolbar-title>
+            </v-col>
+            <v-col cols="10" md="4" sm="4" color="surface-dark" class="px-5">
+                <v-text-field append-inner-icon="mdi-magnify" density="compact" label="Search Dictionary" variant="solo"
+                    hide-details single-line></v-text-field>
+            </v-col>
+        </v-row>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" :rail="rail && !mobile" @click="rail = false" :temporary="mobile" app>
         <v-list>
@@ -56,11 +47,20 @@
             <v-list-item :title="item.item" :value="item.item" :to="item.link" prepend-icon="$vuetify"
                 v-else></v-list-item>
         </v-list>
+        <v-spacer></v-spacer>
+        <v-divider class="mt-8"></v-divider>
+        <v-col cols="12" md="12" sm="12" color="surface-dark">
+            <AIChatbot/>
+             <v-btn prepend-icon="mdi-earth" color="success" class="mt-3" block>
+                Community
+            </v-btn>    
+        </v-col>
     </v-navigation-drawer>
 </template>
 <script setup>
 import { ref } from 'vue'
 import { useDisplay } from 'vuetify'
+import AIChatbot from './AIChatbot.vue';
 const drawer = ref(true)
 const rail = ref(true)
 const { mobile } = useDisplay();

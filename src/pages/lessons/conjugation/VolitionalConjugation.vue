@@ -64,7 +64,7 @@
                         </v-col>
                     </v-row>
                 </v-col>
-                <v-alert icon="$vuetify" title="Notes">
+                <v-alert icon="mdi-information" title="Notes">
                     <ul>
                         <li>Use <b>casual volitional</b> with friends, family, or in inner monologues. <br>
                             Example: <br /><b>明日から頑張ろう。</b><br>

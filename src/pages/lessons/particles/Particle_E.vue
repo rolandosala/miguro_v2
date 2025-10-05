@@ -1,7 +1,7 @@
 <template>
-    <v-container>
+    <v-container class="px-5 py-5 px-md-16 py-md-5">
         <v-row>
-            <v-col cols="12" md="12" sm="12" class="px-5 py-5 px-md-16 py-md-5">
+            <v-col cols="12" md="12" sm="12" >
                 <v-col cols="12" md="10" sm="12">
                     <h4 class="text-h5 font-weight-bold">Japanese Particle 「へ」(pronounced e)</h4>
                     <p>The particle へ is one of the basic direction particles in Japanese. While it is written as へ, it
@@ -34,7 +34,7 @@
                     <v-list-item class="mx-6"><b>学校に行きます</b> – I'm going to school. (more neutral/common)</v-list-item>
                 </v-col>
                 <v-col cols="12" md="8" sm="12">
-                    <v-alert icon="$vuetify" title="Tip:">
+                    <v-alert icon="mdi-information" title="Tip:">
                         <v-list-item>In most cases, に is more common, but へ is still perfectly correct and often used in
                             formal writing or poetic/literary expressions.
                             <br><span><b>Use it with motion verbs like:</b></span>

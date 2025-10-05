@@ -38,7 +38,7 @@
                         Translation: No one came.
                     </v-list-item>
                     <p>When used in negative sentences, も can mean "not even" or "neither."</p>
-                    <v-alert icon="$vuetify" title="Note:">
+                    <v-alert icon="mdi-information" title="Note:">
                         <p>In these cases, も is paired with negative verbs and indefinite question words like 何 (what),
                             誰
                             (who), どこ (where), etc.</p>

@@ -1,17 +1,14 @@
 <template>
-    <v-container>
+    <v-container class="px-5 py-5 px-md-16 py-md-5">
         <v-row>
-            <v-col cols="12" md="12" sm="12" class="px-5 py-5 px-md-16 py-md-5">
+            <v-col cols="12" md="12" sm="12" >
                 <v-col cols="12" md="8" sm="12">
                     <h4 class="text-h5 font-weight-bold">Understanding the Japanese Particle は (wa)</h4>
                     <p>In Japanese, <b style="font-size: 1.2em;">は</b> is one of the
-                        most common particles you'll come across. Although it's written as <b
-                            style="font-size: 1.2em;">は</b> in
-                        hiragana, it's pronounced <strong>"wa"</strong> when used as a particle. Its main job? To mark
-                        the
+                        most common particles you'll come across. Although it's written as <b style="font-size: 1.2em;">は</b> in
+                        hiragana, it's pronounced <strong>"wa"</strong> when used as a particle. Its main job? To mark the
                         <strong>topic</strong> of a sentence. Think of it like this: <b style="font-size: 1.2em;">は</b>
-                        tells us
-                        what the sentence is about.
+                        tells us what the sentence is about.
                     </p>
                 </v-col>
                 <v-col cols="12" md="8" sm="12">
@@ -40,12 +37,10 @@
                 </v-col>
                 <v-col cols="12" md="8" sm="12">
                     <h6 class="text-h6 font-weight-bold">Example of contrast:</h6>
-                    <v-list-item class="mx-4"><b>さかな は すき です。でも にく は すきじゃない です。</b><br />Sakana wa suki desu. Demo niku
-                        wa suki
-                        janai desu. <br />I like fish. But I don’t like meat.</v-list-item>
+                    <v-list-item class="mx-4"><b>さかな は すき です。でも にく は すきじゃない です。</b><br />Sakana wa suki desu. Demo niku wa suki janai desu. <br />I like fish. But I don’t like meat.</v-list-item>
                 </v-col>
                 <v-col cols="12" md="8" sm="12">
-                    <v-alert icon="$vuetify" title="Final Tip: は ≠ is">
+                    <v-alert icon="mdi-information" title="Final Tip: は ≠ is">
                         <v-list-item>While in English we say <b>“A is B”</b>, in Japanese <b>は</b> doesn’t mean<b>
                                 “is”</b>. It just
                             shows what we’re talking about. The <strong>です (desu)</strong> part usually does
@@ -55,8 +50,7 @@
             </v-col>
         </v-row>
     </v-container>
-
-</template>
+</template> 
 <script setup lang="ts">
 const examples = [
     {

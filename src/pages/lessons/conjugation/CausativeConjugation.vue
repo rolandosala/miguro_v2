@@ -149,7 +149,7 @@
                         </li>
                     </ul>
                 </v-col>
-                <v-alert icon="$vuetify" title="Conclusion">
+                <v-alert icon="mdi-information" title="Conclusion">
                     <p>Understanding the causative form is essential for expressing who is performing the action and
                         whether they are being made to do something or allowed to do it. By mastering these conjugations
                         in both polite and casual speech, you will be able to enhance your communication in Japanese,

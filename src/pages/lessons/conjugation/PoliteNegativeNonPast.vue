@@ -31,7 +31,7 @@
                     </v-list-item>
                 </v-col>
                 <v-col cols="12" md="10" sm="12">
-                    <v-alert icon="$vuetify" title="Note">
+                    <v-alert icon="mdi-information" title="Note">
                         <p> The <strong>polite negative form</strong> is often used when speaking to strangers, in
                             formal
                             settings, or when showing respect.

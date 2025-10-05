@@ -100,7 +100,7 @@
                         the casual form is more commonly used in informal settings.</p>
                 </v-col>
                 <v-col cols="12" md="10" sm="12">
-                    <v-alert icon="$vuetify" title="Important Notes">
+                    <v-alert icon="mdi-information" title="Important Notes">
                         <ul class="mx-4 mx-6 mx-md-6">
                             <li>The passive form can also be used with potential verbs (ability to do something). For
                                 example:

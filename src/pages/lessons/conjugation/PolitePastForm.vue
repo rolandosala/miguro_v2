@@ -97,7 +97,7 @@
                             </tr>
                         </tbody>
                     </v-table>
-                    <v-alert icon="$vuetify" title="Tip">
+                    <v-alert icon="mdi-information" title="Tip">
                         Use <strong>polite past</strong> in formal/professional settings. Use
                         <strong>casual past</strong> with friends or texting.
                     </v-alert>

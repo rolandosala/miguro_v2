@@ -2,13 +2,13 @@
     <v-container>
         <v-row>
             <v-col cols="12" md="12" sm="12" class="px-16 d-flex justify-end flex-wrap" v-if="showNavigation">
-                <v-btn prepend-icon="$vuetify" color="primary" class="my-1 py-5 my-md-3 mx-md-2" @click="goToPreviousLesson" block>
-                    Previous
+                <v-btn prepend-icon="mdi-arrow-left" color="primary" class=" my-md-3 mx-md-3" @click="goToPreviousLesson" :block="$vuetify.display.smAndDown">
+                    Previous Lesson
                 </v-btn>
-                <v-btn prepend-icon="$vuetify" color="primary" class="my-1 py-5 my-md-3" @click="goToNextLesson" v-if="showBtns" block>
+                <v-btn prepend-icon="mdi-arrow-right" color="primary" class="my-1 my-md-3" @click="goToNextLesson" v-if="showBtns" :block="$vuetify.display.smAndDown">
                     Next Lesson
                 </v-btn>
-                <v-btn prepend-icon="$vuetify" color="primary" class="my-1 py-5 my-md-3" to="/exercises/Flashcard" v-if="!showBtns" block>
+                <v-btn prepend-icon="mdi-school" color="primary" class="my-1 my-md-3" to="/exercises/Flashcard" v-if="!showBtns" :block="$vuetify.display.smAndDown">
                     Go To Exercises
                 </v-btn>
             </v-col>
