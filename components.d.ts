@@ -12,6 +12,7 @@ declare module 'vue' {
     AppFooter: typeof import('./src/components/AppFooter.vue')['default']
     CharacterComponent: typeof import('./src/components/CharacterInformationComponent.vue')['default']
     CharacterInformationComponent: typeof import('./src/components/CharacterInformationComponent.vue')['default']
+    DictionarySearch: typeof import('./src/components/DictionarySearch.vue')['default']
     FooterNavigation: typeof import('./src/components/FooterNavigation.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     PolitePastNegativeForm: typeof import('./src/components/PolitePastNegativeForm.vue')['default']

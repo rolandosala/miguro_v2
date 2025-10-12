@@ -25,6 +25,7 @@ declare module 'vue-router/auto-routes' {
     '/exercises/Reading': RouteRecordInfo<'/exercises/Reading', '/exercises/Reading', Record<never, never>, Record<never, never>>,
     '/exercises/Translation': RouteRecordInfo<'/exercises/Translation', '/exercises/Translation', Record<never, never>, Record<never, never>>,
     '/Homepage': RouteRecordInfo<'/Homepage', '/Homepage', Record<never, never>, Record<never, never>>,
+    '/kanji/KanjiList': RouteRecordInfo<'/kanji/KanjiList', '/kanji/KanjiList', Record<never, never>, Record<never, never>>,
     '/LandingPage': RouteRecordInfo<'/LandingPage', '/LandingPage', Record<never, never>, Record<never, never>>,
     '/lessons/conjugation/CausativeConjugation': RouteRecordInfo<'/lessons/conjugation/CausativeConjugation', '/lessons/conjugation/CausativeConjugation', Record<never, never>, Record<never, never>>,
     '/lessons/conjugation/ConditionalConjugation': RouteRecordInfo<'/lessons/conjugation/ConditionalConjugation', '/lessons/conjugation/ConditionalConjugation', Record<never, never>, Record<never, never>>,

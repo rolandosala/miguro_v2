@@ -12,99 +12,108 @@
                 </v-card>
             </v-col>
 
-            <v-dialog v-for="data in cards" v-model="dialog" persistent max-width="500">
-                <v-card title="Direction" v-if="direction">
+            <v-dialog v-model="dialog" persistent max-width="500">
+                <v-card :title="cardTitle">
                     <v-card-text>
-                        <p>Mock Test 1: This mocktest consist of 5 questions per section and each covers the basic test
-                            in the different areas in: </p>
-                        <ul class="mx-10 mt-5">
-                            <li>Grammar</li>
-                            <li>Vocabulary</li>
-                            <li>Translation</li>
-                            <li>Listening</li>
-                        </ul>
-                        <v-spacer></v-spacer>
-                        <v-divider></v-divider>
-                        <v-col cols="12" md="12" sm="12" class="d-flex justify-end py-5">
-                            <v-btn color="success" @click="startMockupTest">Start Test</v-btn>
-                        </v-col>
-
-                    </v-card-text>
-
-                </v-card>
-                <v-card title="Test I: Grammar" v-if="test_1">
-                    <v-card-text>
-                        <div class="d-flex justify-center align-center flex-column">
-                            <h3>{{ count }} /{{ limit }}</h3>
-                            <h5 class="text-h5 mt-8">{{ sentence }}</h5>
-                            <!--  <h6>{{ kana }}</h6> -->
-                            <v-col cols="12" md="12" sm="12" class="mt-5 d-flex flex-wrap">
-                                <v-col cols="12" md="6" sm="12" v-for="(choice, index) in choices">
-                                    <v-btn color="primary" @click="nextItem(choice)" :disabled="btnPreview" block>
-                                        {{ choice }}
-                                    </v-btn>
+                        <v-col cols="12" md="12" sm="12">
+                            <div v-if="direction">
+                                <p>Mock Test 1: This mocktest consist of 5 questions per section and each covers the
+                                    basic
+                                    test
+                                    in the different areas in: </p>
+                                <ul class="mx-10 mt-5">
+                                    <li>Grammar</li>
+                                    <li>Vocabulary</li>
+                                    <li>Translation</li>
+                                    <li>Listening</li>
+                                </ul>
+                            </div>
+                            <div class="d-flex justify-center align-center flex-column" v-if="test_1">
+                                <h3>{{ count }} /{{ limit }}</h3>
+                                <h5 class="text-h5 mt-8">{{ sentence }}</h5>
+                                <!--  <h6>{{ kana }}</h6> -->
+                                <v-col cols="12" md="12" sm="12" class="mt-5 d-flex flex-wrap">
+                                    <v-col cols="12" md="6" sm="12" v-for="(choice, index) in choices">
+                                        <v-btn color="primary" @click="nextItem(choice)" :disabled="btnPreview" block>
+                                            {{ choice }}
+                                        </v-btn>
+                                    </v-col>
                                 </v-col>
-                            </v-col>
-                        </div>
-                        <div v-if="preview_answer" class="d-flex justify-end mt-8">
-                            <v-btn color="success" v-if="btnPreview" @click="previewAnswer">Preview Answers</v-btn>
-                            <v-btn color="red" @click="" v-else>Cancel Test</v-btn>
-                        </div>
-                    </v-card-text>
-                </v-card>
-                <v-card title="Test II: Translation" v-if="test_2">
-                    <v-card-text>
-                        <v-col cols="12" md="12" sm="12" class="d-flex flex-column align-center justify-center">
-                            <v-col>
+                            </div>
+                            <div cols="12" md="12" sm="12" class="d-flex flex-column" v-if="test_2">
                                 <h3>{{ count }} / {{ limit * 2 }}</h3>
                                 <hr />
                                 <h6 class="text-h6 font-weight-bold text-center mt-8" v-html="kana"></h6>
-                                <!-- <p class="text-center">({{ romaji }})</p> -->
-                                <v-text-field label="Your English Translation" v-model="user_answer" class="mt-5" />
+                                <v-text-field label="Your English Translation" v-model="user_answer" class="mt-5"
+                                    block />
                                 <div class="d-flex justify-end">
-                                    <!-- <v-btn color="primary" @click="" class="mx-3" v-if="count == limit">Submit
-                                        Answers</v-btn> -->
                                     <v-btn color="primary" @click="submitTranslation" class="mx-3">Next</v-btn>
-
                                 </div>
-                            </v-col>
+                            </div>
+                            <div class="d-flex flex-column" v-if="test_3">
+                                <h3>{{ count }} / {{ limit * 3 }}</h3>
+                                <hr />
+                                <div class="d-flex flex-column justify-center align-center">
+                                    <audio id="birdAudio" :src="'/audio/' + audio + '.mp3'" type="audio/mp3" autoplay>
+                                    </audio>
+                                    <img src="/miguro_1.webp" alt="" style="width: 30%;">
+                                    <v-btn onclick="document.getElementById('birdAudio').play()"
+                                        color="primary">Play</v-btn>
+                                </div>
+                                <v-col cols="12" md="12" sm="12">
+                                    <v-text-field label="Please type your answer.." v-model="user_listening_answer"
+                                        class="mt-5" block />
+                                </v-col>
+                                <div class="d-flex justify-end">
+                                    <v-btn color="primary" @click="submitListening" class="mx-3">Next</v-btn>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column" v-if="test_result">
+                                <hr />
+                                <div class="py-10">
+                                    <h4 :class="'text-center text-h4 text-' + remarks_color">{{ remarks }}</h4>
+                                    <h4 class="text-center text-h5">{{ totalPercentage }}%</h4>
+                                </div>
+                                <div>
+                                    <v-table>
+                                        <thead>
+                                            <tr>
+                                                <th>Test</th>
+                                                <th class="text-center">Score</th>
+                                                <th class="text-center">Percent</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Test I: Grammar</td>
+                                                <td class="text-center">{{ grammarCorrectCount }}</td>
+                                                <td class="text-center">{{ grammarArray.length }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Test II: Translation</td>
+                                                <td class="text-center">{{ translationCorrectCount }}</td>
+                                                <td class="text-center">{{ translationArray.length }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Test III: Listening</td>
+                                                <td class="text-center">{{ listeningCorrectCount }}</td>
+                                                <td class="text-center">{{ listeningArray.length }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </v-table>
+                                </div>
+                            </div>
                         </v-col>
-                        <div v-if="preview_answer" class="d-flex justify-end mt-8">
+                        <v-spacer></v-spacer>
+                        <v-divider></v-divider>
+                        <v-col cols="12" md="12" sm="12" class="d-flex justify-end py-5">
+                            <v-btn color="success" @click="startMockupTest" class="mx-3" v-if="direction">Start
+                                Test</v-btn>
                             <v-btn color="success" v-if="btnPreview" @click="previewAnswer">Preview Answers</v-btn>
-                            <v-btn color="red" @click="" v-else>Cancel Test</v-btn>
-                        </div>
-                    </v-card-text>
-                </v-card>
-            </v-dialog>
-            <v-dialog v-model="dialogPreviewAnswer" max-width="600" persistent>
-                <v-card title="Answer">
-                    <v-divider></v-divider>
-                    <v-card-text>
-                        <div>
-                            <v-table>
-                                <thead>
-                                    <tr>
-                                        <th>Sentence</th>
-                                        <th>Correct Answer</th>
-                                        <th>Your Answer</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(data, index) in preview_answer">
-                                        <td>{{ index + 1 }}. {{ data.sentence }}</td>
-                                        <td>{{ data.answer }}</td>
-                                        <td>
-                                            <b class="text-success" v-if="data.answer === data.userAnswer">{{
-                                                data.userAnswer }}</b>
-                                            <b class="text-red" v-else> {{ data.userAnswer }}</b>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </v-table>
-                        </div>
-                        <div class="d-flex justify-end mt-8">
-                            <v-btn color="red" @click="reset">Close</v-btn>
-                        </div>
+                            <v-btn color="primary" v-if="test_result" @click="tryAgain" class="mx-3">Try Again</v-btn>
+                            <v-btn color="red" v-if="test_result" @click="exitTest">Exit Test</v-btn>
+                            <v-btn color="red" @click="dialog = false" v-else>Cancel Test</v-btn>
+                        </v-col>
                     </v-card-text>
                 </v-card>
             </v-dialog>
@@ -117,17 +126,30 @@ import { ref } from 'vue'
 const direction = ref(true)
 const test_1 = ref(false)
 const test_2 = ref(false)
+const test_3 = ref(false)
 const index = ref(0)
 const correctCount = ref(0)
 const count = ref(1)
 const limit = ref(5)
 const sentence = ref('')
 const kana = ref('')
+const audio = ref('')
 const answer = ref('')
 const choices = ref([])
 const user_answer = ref('')
+const user_listening_answer = ref('')
 const btnPreview = ref(false)
-const preview_answer = ref([])
+const startTestBtn = ref(true)
+const grammarCorrectCount = ref(0)
+const translationCorrectCount = ref(0)
+const listeningCorrectCount = ref(0)
+const totalPercentage = ref(0)
+const cardTitle = ref('Direction')
+const test_result = ref(false)
+const englishTranslation = ref('')
+const grammarArray = ref([])
+const translationArray = ref([])
+const listeningArray = ref([])
 const cards = [
     {
         id: 'cardOne', img: '/miguro_1.webp', title: 'MockTest 1',
@@ -189,15 +211,52 @@ const cards = [
                 romaji: "Nihongo o benkyō shiteimasu.",
                 english: "I am studying Japanese."
             }
+        ],
+        listening: [
+            {
+                audio: "Please",
+                answer: "Please"
+            },
+            {
+                audio: "Good Afternoon",
+                answer: "Good Afternoon"
+            },
+            {
+                audio: "Good Evening",
+                answer: "Good Evening"
+            },
+            {
+                audio: "Good Morning",
+                answer: "Good Morning"
+            },
+            {
+                audio: "Goodbye",
+                answer: "Goodbye"
+            },
+            {
+                audio: "Thank you",
+                answer: "Thank you"
+            },
+            {
+                audio: "Thats right",
+                answer: "Thats right"
+            },
+            {
+                audio: "Welcome",
+                answer: "Your Welcome"
+            },
         ]
     },
 ]
 const dialog = ref(false)
 const dialogPreviewAnswer = ref(false)
-
+const remarks = ref('')
+const remarks_color = ref('')
 const startMockupTest = () => {
     direction.value = false
     test_1.value = true
+    cardTitle.value = 'Test I: Grammar'
+    startTestBtn.value = false
 }
 const getItem = (id: number) => {
     index.value = id
@@ -205,43 +264,186 @@ const getItem = (id: number) => {
     sentence.value = cards[index.value].phrase[random].japanese;
     choices.value = cards[index.value].phrase[random].choices;
     answer.value = cards[index.value].phrase[random].answer;
-    kana.value = cards[index.value].translations[random].japanese
+    /* kana.value = cards[index.value].translations[random].japanese
+    englishTranslation.value = cards[index.value].translations[random].english */
+    audio.value = cards[index.value].listening[random].audio
+    test_1.value == true || test_2.value == true || test_3.value == true || test_result.value == true ? direction.value = false : direction.value = true
+    test_result.value = false
     dialog.value = true
 }
+const shuffledTranslations = ref([]);  // store shuffled order
+const currentIndex = ref(0);           // track current item
+
+const shuffleArray = (array) => {
+    // Fisher–Yates shuffle algorithm
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+};
+
+const getTranslationItem = () => {
+    const translations = cards[index.value].translations;
+
+    // If no shuffled set yet, or finished all — reshuffle
+    if (
+        shuffledTranslations.value.length === 0 ||
+        currentIndex.value >= shuffledTranslations.value.length
+    ) {
+        shuffledTranslations.value = shuffleArray(translations);
+        currentIndex.value = 0;
+    }
+
+    // Get the next translation
+    const item = shuffledTranslations.value[currentIndex.value];
+
+    // Assign to reactive variables
+    kana.value = item.japanese;
+    englishTranslation.value = item.english;
+
+    // Move to next for next call
+    currentIndex.value++;
+};
 const nextItem = (item: any) => {
-    answer === item ? correctCount.value++ : ''
-    preview_answer.value.push({ sentence: sentence.value, answer: answer.value, userAnswer: item })
+    answer.value === item ? grammarCorrectCount.value++ : ''
+    grammarArray.value.push({ number: count.value, sentence: sentence.value, userAnswer: item })
     if (count.value === limit.value) {
         test_2.value = true
         test_1.value = false
-        /*  btnPreview.value = true */
+        cardTitle.value = 'Test II: Translation'
+        count.value++
+        getTranslationItem()
     } else {
         count.value++
         getItem(index.value)
-    }
 
+    }
 }
+const normalizeText = (text) => {
+    return text
+        .toLowerCase()
+        .replace(/’/g, "'")                 // normalize apostrophes
+        .replace(/\b(that's)\b/g, 'that is')
+        .replace(/\b(there's)\b/g, 'there is')
+        .replace(/\b(it's)\b/g, 'it is')
+        .replace(/\b(you're)\b/g, 'you are')
+        .replace(/\b(I'm)\b/g, 'I am')
+        .replace(/[.,!?;:]/g, '')           // remove punctuation
+        .replace(/\s+/g, ' ')               // normalize spacing
+        .trim();
+};
+const synonyms = {
+    'a': ['one'],
+    'apple': ['fruit'],
+    'cat': ['kitty', 'kitten'],
+    'there is': ['there’s', 'there exists'],
+    'this is': ['that is']
+};
+// simple function to replace synonyms with their base word
+const replaceSynonyms = (text) => {
+    let replaced = text;
+    for (const [base, syns] of Object.entries(synonyms)) {
+        for (const s of syns) {
+            const pattern = new RegExp(`\\b${s}\\b`, 'g');
+            replaced = replaced.replace(pattern, base);
+        }
+    }
+    return replaced;
+};
+
+const isSimilar = (a: any, b: any) => {
+    const wordsA = a.split(' ');
+    const wordsB = b.split(' ');
+    const matches = wordsA.filter(w => wordsB.includes(w)).length;
+    const ratio = matches / Math.max(wordsA.length, wordsB.length);
+    return ratio >= 0.8; // threshold for "close enough"
+};
+
 const submitTranslation = () => {
+    let correct = normalizeText(englishTranslation.value);
+    let user = normalizeText(user_answer.value);
+    translationArray.value.push({ number: count.value, kana: kana.value, english: englishTranslation.value, userAnswer: user_answer.value })
+    // apply synonym replacement
+    correct = replaceSynonyms(correct);
+    user = replaceSynonyms(user);
+
+    // check equality or similarity
+    if (correct === user || isSimilar(correct, user)) {
+        translationCorrectCount.value++;
+    }
+
     if (count.value === limit.value * 2) {
-        return alert('limit reached')
+        test_2.value = false
+        test_3.value = true
+        cardTitle.value = 'Test III: Listening'
+        count.value++
+    } else {
+        count.value++
+ /*        getItem(index.value) */
+        getTranslationItem()
+        user_answer.value = ''
+    }
+};
+/* const submitTranslation = () => {
+    englishTranslation.value.toLowerCase() === user_answer.value.toLowerCase() ? translationCorrectCount.value++ : ''
+    translationArray.value.push({ number: count.value, kana: kana.value, english: englishTranslation.value, userAnswer: user_answer.value })
+    if (count.value === limit.value * 2) {
+        test_2.value = false
+        test_3.value = true
+        cardTitle.value = 'Test III: Listening'
+        count.value++
     } else {
         count.value++
         getItem(index.value)
+        user_answer.value = ''
     }
-
+} */
+const submitListening = () => {
+    listeningArray.value.push({ number: count, userAnswer: user_listening_answer.value, correctAnswer: audio.value })
+    user_listening_answer.value.toLowerCase() === audio.value.toLowerCase() ? listeningCorrectCount.value++ : ''
+    if (count.value === limit.value * 3) {
+        cardTitle.value = 'Test Result'
+        test_result.value = true
+        test_3.value = false
+        totalPercentage.value = Math.round(((grammarCorrectCount.value + translationCorrectCount.value + listeningCorrectCount.value) / count.value) * 100)
+        remarks.value = totalPercentage.value < 50 ? 'Failed' : 'Passed'
+        remarks_color.value = totalPercentage.value < 50 ? 'red' : 'success'
+    } else {
+        count.value++
+        getItem(index.value)
+        user_listening_answer.value = ''
+    }
 }
-const reset = () => {
-    dialogPreviewAnswer.value = false;
-    dialog.value = false
-    preview_answer.value = []
+const exitTest = () => {
     count.value = 1
-    btnPreview.value = false
-    correctCount.value = 0
-
+    test_result.value = false
+    dialog.value = false
+    grammarCorrectCount.value = 0
+    translationCorrectCount.value = 0
+    listeningCorrectCount.value = 0
+    totalPercentage.value = 0
+    grammarArray.value = []
+    listeningArray.value = []
+    translationArray.value = []
+}
+const tryAgain = () => {
+    count.value = 1
+    test_result.value = false
+    test_1.value = true
+    grammarCorrectCount.value = 0
+    translationCorrectCount.value = 0
+    listeningCorrectCount.value = 0
+    totalPercentage.value = 0
+    grammarArray.value = []
+    listeningArray.value = []
+    translationArray.value = []
 }
 const previewAnswer = () => {
     dialog.value = false
     dialogPreviewAnswer.value = true
+
 }
 
 

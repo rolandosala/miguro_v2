@@ -5,10 +5,7 @@
                 <v-app-bar-nav-icon variant="text" @click="drawer = !drawer"></v-app-bar-nav-icon>
                 <v-toolbar-title class="mx-10">Miguro.com</v-toolbar-title>
             </v-col>
-            <v-col cols="10" md="4" sm="4" color="surface-dark" class="px-5">
-                <v-text-field append-inner-icon="mdi-magnify" density="compact" label="Search Dictionary" variant="solo"
-                    hide-details single-line></v-text-field>
-            </v-col>
+            <DictionarySearch />
         </v-row>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" :rail="rail && !mobile" @click="rail = false" :temporary="mobile" app>
@@ -50,10 +47,10 @@
         <v-spacer></v-spacer>
         <v-divider class="mt-8"></v-divider>
         <v-col cols="12" md="12" sm="12" color="surface-dark">
-            <AIChatbot/>
-             <v-btn prepend-icon="mdi-earth" color="success" class="mt-3" block>
+            <AIChatbot />
+            <v-btn prepend-icon="mdi-earth" color="success" class="mt-3" block>
                 Community
-            </v-btn>    
+            </v-btn>
         </v-col>
     </v-navigation-drawer>
 </template>
@@ -154,6 +151,9 @@ const menu = [
             { item: 'Institutions', link: '/lessons/vocabularies/Institutions' },
             { item: 'Family', link: '/lessons/vocabularies/Family' },
         ]
+    },
+    {
+        item: 'Kanji List', link: '/kanji/KanjiList', collapse: 'collapse', target: 'vocabularies', submenu: []
     },
 ]
 const exercises = [

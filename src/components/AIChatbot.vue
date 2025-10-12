@@ -2,9 +2,10 @@
     <v-btn prepend-icon="mdi-robot" color="primary" @click="dialog = true" block>
         AI Chatbot
     </v-btn>
-    <v-dialog v-model="dialog" persistent class="d-flex justify-center align-center">
-        <v-card max-width="800" title="Chat with AI">
-            <v-card-text class="px-10 py-10">
+    <v-dialog v-model="dialog" persistent max-width="800">
+        <v-card>
+            <v-card-title>Chat with AI</v-card-title>
+            <v-card-text class="px-10 py-10" style="overflow-y: scroll">
                 <!-- Loop messages -->
                 <div v-for="(msg, index) in messages" :key="index" class="d-flex my-2"
                     :class="msg.sender === 'user' ? 'justify-end' : 'justify-start'">
@@ -15,7 +16,7 @@
                     </div>
                 </div>
             </v-card-text>
-            <v-card-text>
+            <v-card-text >
                 <v-text-field label="Start Conversation.." v-model="userMessage" @keyup.enter="send"></v-text-field>
             </v-card-text>
             <v-divider></v-divider>

@@ -23,7 +23,7 @@
             <v-card-text>
                 <v-col cols="12" md="12" sm="12" class="d-flex flex-column align-center justify-center">
                     <v-col v-if="!disable_choices">
-                        <h1 class="text-h1 font-weight-bold text-center">{{ kanji }}</h1>
+                        <h1 class="text-h3 font-weight-bold text-center">{{ kanji }}</h1>
                         <v-col>
                             <h5 class="text-h6 font-weight-bold text-center">{{ time }}</h5>
                             <h6 class="text-h6 font-weight-bold text-center">
