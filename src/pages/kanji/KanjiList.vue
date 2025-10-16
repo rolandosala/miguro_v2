@@ -83,18 +83,23 @@
     <v-dialog v-model="dialogVocabularySample" max-width="600">
         <v-card title="Vocabulary Sample">
             <v-card-text>
-                <v-row>
+                <v-row v-for="(item, index) in vocabList" :key="index">
                     <v-col cols="12" md="4" sm="12">
-                        <v-text-field label="Kanji" v-model="vocab_kanji" block />
+                        <v-text-field label="Kanji" v-model="item.kanji" block />
                     </v-col>
+
                     <v-col cols="12" md="4" sm="12">
-                        <v-text-field label="Kana" v-model="vocab_kana" block />
+                        <v-text-field label="Kana" v-model="item.kana" block />
                     </v-col>
+
                     <v-col cols="12" md="4" sm="12">
-                        <v-text-field label="Meaning" v-model="vocab_meaning" block />
+                        <v-text-field label="Meaning" v-model="item.meaning" block />
                     </v-col>
-                    <v-btn color="success" @click="saveCharacter">Save Character</v-btn>
                 </v-row>
+                <v-btn color="success" :loading="loading" @click="saveCharacter">
+                    {{ loading ? 'Saving Data...' : 'Save Character' }}
+                </v-btn>
+                <v-btn color="primary" @click="addRow">New Row</v-btn>
             </v-card-text>
         </v-card>
     </v-dialog>
@@ -110,24 +115,17 @@ const meaning = ref('')
 const onyumi = ref('')
 const konyumi = ref('')
 const strokes = ref('')
-const vocab_kanji = ref('')
-const vocab_kana = ref('')
-const vocab_meaning = ref('')
 const newCharacterArray = ref()
 const kanjiData = ref([])
-const characters = [
-    {
-        kanji: '四', meaning: 'Four', onyumi: 'Shi [し]', konyumi: 'Yo / Yu / Yon [よ/ゆ/よん]', strokes: '4', sample_vocabs: [
-            { kanji: '四人', kana: 'よにん', meaning: 'four people' }
-        ]
-    },
-    {
-        kanji: '五', meaning: 'Five', onyumi: 'Go [ご] ', konyumi: 'Itsu  [いつ]', strokes: '4', sample_vocabs: [
-            { kanji: '五月', kana: 'ごがつ', meaning: 'Month of May' }
-        ]
-    },
-]
 const informationHolder = ref()
+const loading = ref(false)
+const vocabList = ref([
+    { kanji: "", kana: "", meaning: "" }, // start with one row
+]);
+const addRow = () => {
+    vocabList.value.push({ kanji: "", kana: "", meaning: "" });
+};
+
 
 const viewCharacterInformation = (id: number) => {
     dialog.value = true
@@ -136,18 +134,18 @@ const viewCharacterInformation = (id: number) => {
 
 const saveCharacter = async () => {
     newCharacterArray.value = {
-        kanji: kanji.value, meaning: meaning.value, onyumi: onyumi.value, konyumi: konyumi.value, strokes: strokes.value, sample_vocabs: [
-            { kanji: vocab_kanji.value, kana: vocab_kana.value, meaning: vocab_meaning.value }
-        ]
+        kanji: kanji.value, meaning: meaning.value, onyumi: onyumi.value, konyumi: konyumi.value, strokes: strokes.value, sample_vocabs: vocabList.value
     }
     try {
+        loading.value = true
         const result = await api.postAddNewKanjiCharacter(newCharacterArray.value);
         dialogVocabularySample.value = false;
         dialogAddNewCharacter.value = false;
         await fetchKanjiList();
-
     } catch (error) {
         console.error('Error uploading new kanji character:', error);
+    } finally {
+        loading.value = false;
     }
 }
 
