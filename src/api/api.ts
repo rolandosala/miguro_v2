@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { AxiosResponse } from 'axios';
 
 const api = axios.create({
-    baseURL: `http://${window.location.hostname}:3001`
+    baseURL: `https://miguro-backend.onrender.com`
 })
 
 export default {
