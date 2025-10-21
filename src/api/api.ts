@@ -2,7 +2,9 @@ import axios from 'axios';
 import type { AxiosResponse } from 'axios';
 
 const api = axios.create({
-    baseURL: `https://miguro-backend.onrender.com`
+    baseURL: process.env.NODE_ENV === "production"
+        ? "https://miguro-v2.vercel.app"
+        : "http://localhost:3001",
 })
 
 export default {
@@ -11,5 +13,8 @@ export default {
     },
     postAddNewKanjiCharacter(data: any): Promise<AxiosResponse<any>> {
         return api.post('/uploadNewKanjiCharacter', data);
+    },
+    getSearchDictionary(query: string): Promise<AxiosResponse<any>> {
+        return api.get('/searchDictionary', { params: { query }, headers: { 'Cache-Control': 'no-cache' } });
     }
 }
