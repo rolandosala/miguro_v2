@@ -3,7 +3,7 @@ import type { AxiosResponse } from 'axios';
 
 const api = axios.create({
     baseURL: process.env.NODE_ENV === "production"
-        ? "https://miguro-v2.vercel.app"
+        ? "https://miguro-backend.onrender.com"
         : "http://localhost:3001",
 })
 
