@@ -15,6 +15,24 @@
                         </v-card-text>
                     </v-card>
                 </v-col>
+                <v-col cols="12" md="12" sm="12" v-if="kanjiData.length === 0" class="d-flex flex-row flex-wrap justify-center align-center">
+                    <v-col cols="12" md="12" sm="12" class="mx-auto">
+                        <p>Fetching Kanji List...</p>
+                    </v-col>
+                    <v-col cols="12" md="3" sm="12" class="mx-auto">
+                        <v-skeleton-loader color="secondary" type="card" :loading="kanjiLoading"></v-skeleton-loader>
+                    </v-col>
+                    <v-col cols="12" md="3" sm="12" class="mx-auto">
+                        <v-skeleton-loader color="secondary" type="card" :loading="kanjiLoading"></v-skeleton-loader>
+                    </v-col>
+                    <v-col cols="12" md="3" sm="12" class="mx-auto">
+                        <v-skeleton-loader color="secondary" type="card" :loading="kanjiLoading"></v-skeleton-loader>
+                    </v-col>
+                    <v-col cols="12" md="3" sm="12" class="mx-auto">
+                        <v-skeleton-loader color="secondary" type="card" :loading="kanjiLoading"></v-skeleton-loader>
+                    </v-col>
+                </v-col>
+
             </v-row>
         </v-row>
     </v-container>
@@ -107,6 +125,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import api from '@/api/api';
+const kanjiLoading = ref(false);
 const dialog = ref(false)
 const dialogAddNewCharacter = ref(false)
 const dialogVocabularySample = ref(false)
@@ -151,10 +170,13 @@ const saveCharacter = async () => {
 
 const fetchKanjiList = async () => {
     try {
+        kanjiLoading.value = true;
         const response = await api.getKanjiList();
         kanjiData.value = response.data;
     } catch (error) {
         console.error('Error fetching kanji list:', error);
+    } finally {
+        kanjiLoading.value = false;
     }
 }
 onMounted(async () => {

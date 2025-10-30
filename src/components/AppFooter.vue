@@ -3,7 +3,7 @@
     app
     height="40"
   >
-    <a
+    <!-- <a
       v-for="item in items"
       :key="item.title"
       class="d-inline-block mx-2 social-link"
@@ -16,13 +16,13 @@
         :icon="item.icon"
         :size="item.icon === '$vuetify' ? 24 : 16"
       />
-    </a>
+    </a> -->
 
     <div
       class="text-caption text-disabled"
       style="position: absolute; right: 16px;"
     >
-      &copy; 2016-{{ (new Date()).getFullYear() }} <span class="d-none d-sm-inline-block">Vuetify, LLC</span>
+      &copy; {{ (new Date()).getFullYear() }} <span class="d-none d-sm-inline-block">Developed by Rolando</span>
       —
       <a
         class="text-decoration-none on-surface"

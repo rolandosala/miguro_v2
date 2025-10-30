@@ -1,7 +1,7 @@
 <template>
     <v-container class="px-5 py-5 px-md-16 py-md-5">
         <v-row>
-            <v-col cols="12" md="12" sm="12" >
+            <v-col cols="12" md="12" sm="12">
                 <h4 class="text-h5 font-weight-bold mb-4">Introduction to Kanji</h4>
                 <p>Kanji (漢字) are the adopted Chinese characters used in the Japanese writing system. Alongside
                     hiragana
@@ -43,23 +43,35 @@
                         use.</v-list-item>
                     <v-list-item>Most educated Japanese adults know between 2,000–3,000 kanji.</v-list-item>
                 </v-list>
-                <h5 class="text-h6 font-weight-bold">Types of Kanji Readings</h5>
-                <label>Kanji have two main types of readings:</label>
-                <v-list density="compact">
-                    <v-list-item>On'yomi (音読み) – "Sino-Japanese" reading (from Chinese)</v-list-item>
-                    <v-list-item>Kun'yomi (訓読み) – Native Japanese reading</v-list-item>
-                </v-list>
-                <v-list density="compact">
-                    <v-list-item>Example: 水 (water)</v-list-item>
-                    <v-list-item class="mx-4">On’yomi: sui (used in compounds like 水曜日 – Suiyōbi,
-                        Wednesday)</v-list-item>
-                    <v-list-item class="mx-4">Kun’yomi: mizu (used when standing alone)</v-list-item>
-                </v-list>
+            </v-col>
+            <v-col cols="12" md="12" sm="12">
+                <v-row>
+                    <v-col cols="12" md="8" sm="12">
+                        <h5 class="text-h6 font-weight-bold">Types of Kanji Readings</h5>
+                        <label>Kanji have two main types of readings:</label>
+                        <v-list density="compact">
+                            <v-list-item>On'yomi (音読み) – "Sino-Japanese" reading (from Chinese)</v-list-item>
+                            <v-list-item>Kun'yomi (訓読み) – Native Japanese reading</v-list-item>
+                        </v-list>
+                        <v-list density="compact">
+                            <v-list-item>Example: 水 (water)</v-list-item>
+                            <v-list-item class="mx-4">On’yomi: sui (used in compounds like 水曜日 – Suiyōbi,
+                                Wednesday)</v-list-item>
+                            <v-list-item class="mx-4">Kun’yomi: mizu (used when standing alone)</v-list-item>
+                        </v-list>
+                    </v-col>
+                    <v-col cols="12" md="4" sm="12" class="d-flex justify-center align-center flex-column">
+                        <Quizz2 :quizQuestions="practiceQuestions" title="Can you identify this kanji?" />
+                    </v-col>
+                </v-row>
+            </v-col>
+            <v-col cols="12" md="12" sm="12">
                 <v-alert icon="mdi-information" title="Tips for Learning Kanji">
                     <v-list-item>Learn kanji in context – with vocabulary, not just as isolated
                         characters.</v-list-item>
                     <v-list-item>Use mnemonics – create stories or visuals to remember meanings.</v-list-item>
-                    <v-list-item>Practice writing by hand – it helps reinforce stroke order and memory.</v-list-item>
+                    <v-list-item>Practice writing by hand – it helps reinforce stroke order and
+                        memory.</v-list-item>
                     <v-list-item>Start with JLPT levels or by frequency – many learners follow JLPT lists
                         (N5-N1).</v-list-item>
                     <v-list-item>Use spaced repetition (SRS) – tools like Anki or WaniKani help with long-term
@@ -69,3 +81,29 @@
         </v-row>
     </v-container>
 </template>
+<script lang="ts" setup>
+import { ref } from 'vue';
+const practiceQuestions = ref([
+    { word: '日', romaji: 'nichi / hi', meaning: 'day, sun' },
+    { word: '月', romaji: 'getsu / tsuki', meaning: 'month, moon' },
+    { word: '火', romaji: 'ka / hi', meaning: 'fire' },
+    { word: '水', romaji: 'sui / mizu', meaning: 'water' },
+    { word: '木', romaji: 'moku / ki', meaning: 'tree, wood' },
+    { word: '金', romaji: 'kin / kane', meaning: 'gold, money' },
+    { word: '土', romaji: 'do / tsuchi', meaning: 'earth, soil' },
+    { word: '山', romaji: 'yama', meaning: 'mountain' },
+    { word: '川', romaji: 'kawa', meaning: 'river' },
+    { word: '田', romaji: 'ta', meaning: 'rice field' },
+    { word: '人', romaji: 'hito', meaning: 'person' },
+    { word: '口', romaji: 'kuchi', meaning: 'mouth' },
+    { word: '目', romaji: 'me', meaning: 'eye' },
+    { word: '耳', romaji: 'mimi', meaning: 'ear' },
+    { word: '手', romaji: 'te', meaning: 'hand' },
+    { word: '足', romaji: 'ashi', meaning: 'foot, leg' },
+    { word: '車', romaji: 'kuruma', meaning: 'car, vehicle' },
+    { word: '学校', romaji: 'gakkou', meaning: 'school' },
+    { word: '先生', romaji: 'sensei', meaning: 'teacher' },
+    { word: '本', romaji: 'hon', meaning: 'book' },
+])
+
+</script>

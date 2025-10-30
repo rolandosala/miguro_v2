@@ -47,7 +47,6 @@ const searchDictionary = async () => {
         searchResult.value = {}
         const decodedInput = decodeURIComponent(searchInput.value)
         const result = await api.getSearchDictionary(decodedInput)
-        console.log(result)
         if (result.status == 200 && result.data.words?.length > 0) {
             searchResult.value = result.data.words[0]
         } else {
@@ -57,6 +56,7 @@ const searchDictionary = async () => {
         console.log(error)
     } finally {
         loading.value = false      // hide loading state after fetch
+        searchInput.value = ''
     }
 }
 </script>

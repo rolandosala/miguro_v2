@@ -1,10 +1,11 @@
 <template>
     <v-container class="px-5 py-5 px-md-16 py-md-5">
         <v-row>
-            <v-col cols="12" md="12" sm="12" >
+            <v-col cols="12" md="12" sm="12">
                 <h4 class="text-h5 font-weight-bold mb-4">Introduction to Hiragana (ひらがな)</h4>
                 <p class="mb-4">Hiragana is one of the three writing systems used in the Japanese language, alongside
-                    Katakana and Kanji. It's often the first script Japanese children and new learners of the language are taught.
+                    Katakana and Kanji. It's often the first script Japanese children and new learners of the language
+                    are taught.
                 </p>
                 <h5 class="text-h6 font-weight-bold">Why Learn Hiragana?</h5>
                 <label>Hiragana is essential for:</label>
@@ -24,6 +25,8 @@
                     </v-col>
                     <v-col cols="12" md="6" sm="12">
                         <CharacterInformationComponent :characters="yoonCharacters" :title="'Yoon Characters'" />
+                    </v-col>
+                    <v-col cols="12" md="7" sm="12">
                         <p>Note: ぢ (ji) and づ (zu) are rarely used and usually replaced with じ and ず, except in
                             certain native words or compounds.</p>
                         <v-alert icon="mdi-information" title="Tips for Learning Hiragana">
@@ -36,13 +39,21 @@
                             <v-list-item>Read children’s books: Most are written in Hiragana.</v-list-item>
                         </v-alert>
                     </v-col>
+                    <v-col cols="12" md="5" sm="12" class="d-flex justify-center align-center flex-column">
+                        <Quizz1 v-if="!loading && quizItems.length > 0" :quizQuestions="quizItems"
+                            title="Can you read this words?" />
+
+                    </v-col>
                 </v-row>
             </v-col>
         </v-row>
     </v-container>
+
 </template>
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import api from '@/api/api';
+const loading = ref(false)
 const characters = ref([
     { character: ['あ (a)', 'い (i)', 'う (u)', 'え (e)', 'お(o)'] },
     { character: ['か (ka)', 'き (ki)', 'く (ku)', 'け (ke)', 'こ (ko)'] },
@@ -76,4 +87,23 @@ const yoonCharacters = ref([
     { character: ['みゃ (mya)', 'みゅ (myu)', 'みょ (myo)'] },
     { character: ['りゃ (rya)', 'りゅ (ryu)', 'りょ (ryo)'] }
 ])
+const quizItems = ref([])
+const getQuiz = async () => {
+    try {
+        loading.value = true;
+        const result = await api.getQuizQuestions(1);
+        if (result.status !== 200) {
+            throw new Error('Failed to fetch quiz questions');
+        } else {
+            quizItems.value = result.data.questions;
+        }
+    } catch (error) {
+        console.error('Error fetching quiz questions:', error);
+    } finally {
+        loading.value = false;
+    }
+}
+onMounted(async () => {
+    await getQuiz();
+});
 </script>

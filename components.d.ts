@@ -16,6 +16,8 @@ declare module 'vue' {
     FooterNavigation: typeof import('./src/components/FooterNavigation.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     PolitePastNegativeForm: typeof import('./src/components/PolitePastNegativeForm.vue')['default']
+    Quizz1: typeof import('./src/components/quizzes/Quizz1.vue')['default']
+    Quizz2: typeof import('./src/components/quizzes/Quizz2.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/Sidebar.vue')['default']

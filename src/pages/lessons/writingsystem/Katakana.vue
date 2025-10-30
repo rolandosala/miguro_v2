@@ -1,7 +1,7 @@
 <template>
     <v-container class="px-5 py-5 px-md-16 py-md-5">
         <v-row>
-            <v-col cols="12" md="12" sm="12" >
+            <v-col cols="12" md="12" sm="12">
                 <h4 class="text-h5 font-weight-bold mb-4">What is Katakana (カタカナ)?</h4>
                 <p class="mb-4">Katakana is one of the three writing systems used in Japanese, alongside Hiragana (ひらがな)
                     and
@@ -29,7 +29,12 @@
                     </v-col>
                     <v-col cols="12" md="6" sm="12">
                         <CharacterInformationComponent :characters="yoonCharacters" :title="'Yoon Characters'" />
+                        <div class="d-flex justify-center align-center flex-column mt-5 px-5 py-5">
+                            <Quizz1 v-if="!loading && quizItems.length > 0" :quizQuestions="quizItems" title="Can you read this words?" />
+                        </div>
+
                     </v-col>
+
                 </v-row>
             </v-col>
             <v-col cols="12" md="12" sm="12">
@@ -67,7 +72,8 @@
     </v-container>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import api from '@/api/api';
 const characters = ref([
     { character: ['ア (a)', 'イ (i)', 'ウ (u)', 'エ (e)', 'オ (o)'] },
     { character: ['カ (ka)', 'キ (ki)', 'ク (ku)', 'ケ (ke)', 'コ (ko)'] },
@@ -107,6 +113,27 @@ const otherCharacters = ([
     { character: 'ヵ / ヶ', usage: 'Small versions of カ and ケ, used in counters and place names' },
     { character: 'ㇰ, ㇱ, etc.', usage: 'Rare small katakana for Ainu or linguistic use (not commonly used in standard Japanese)' },
 ])
+
+const quizItems = ref([])
+const loading = ref(false)
+const getQuiz = async () => {
+    try {
+        loading.value = true;
+        const result = await api.getQuizQuestions(2);
+        if (result.status !== 200) {
+            throw new Error('Failed to fetch quiz questions');
+        } else {
+            quizItems.value = result.data.questions;
+        }
+    } catch (error) {
+        console.error('Error fetching quiz questions:', error);
+    } finally {
+        loading.value = false;
+    }
+}
+onMounted(async () => {
+    await getQuiz();
+});
 const tips = [
     "Start with recognition – Learn to read and pronounce Katakana before worrying about writing it.",
     "Use flashcards or apps – Consistent repetition helps with memorization.",

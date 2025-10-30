@@ -16,5 +16,8 @@ export default {
     },
     getSearchDictionary(query: string): Promise<AxiosResponse<any>> {
         return api.get('/searchDictionary', { params: { query }, headers: { 'Cache-Control': 'no-cache' } });
+    },
+    getQuizQuestions(id: number): Promise<AxiosResponse<any>> {
+        return api.get('/fetchQuiz', { params: { id } });
     }
 }

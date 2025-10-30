@@ -10,7 +10,7 @@
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" :rail="rail && !mobile" @click="rail = false" :temporary="mobile" app>
         <v-list>
-            <v-list-item prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg" title="John Leider">
+            <v-list-item prepend-avatar="https://randomuser.me/api/portraits/lego/7.jpg" title="Username">
                 <template v-slot:append>
                     <v-btn icon="mdi-chevron-left" variant="text" @click.stop="rail = !rail"></v-btn>
                 </template>
@@ -47,10 +47,10 @@
         <v-spacer></v-spacer>
         <v-divider class="mt-8"></v-divider>
         <v-col cols="12" md="12" sm="12" color="surface-dark">
-            <AIChatbot />
-            <v-btn prepend-icon="mdi-earth" color="success" class="mt-3" block>
+           <!--  <AIChatbot /> -->
+            <!-- <v-btn prepend-icon="mdi-earth" color="success" class="mt-3" block>
                 Community
-            </v-btn>
+            </v-btn> -->
         </v-col>
     </v-navigation-drawer>
 </template>
