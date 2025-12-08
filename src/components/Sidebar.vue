@@ -1,7 +1,7 @@
 <template>
     <v-app-bar color="primary">
         <v-row class="d-flex flex-row">
-            <v-col cols="2" md="8" sm="8" class="d-flex flex-row align-center">
+            <v-col cols="2" md="8" sm="8" class="d-flex flex-row align-center" to="/">
                 <v-app-bar-nav-icon variant="text" @click="drawer = !drawer"></v-app-bar-nav-icon>
                 <v-toolbar-title class="mx-10">Miguro.com</v-toolbar-title>
             </v-col>
@@ -47,7 +47,7 @@
         <v-spacer></v-spacer>
         <v-divider class="mt-8"></v-divider>
         <v-col cols="12" md="12" sm="12" color="surface-dark">
-           <!--  <AIChatbot /> -->
+            <!--  <AIChatbot /> -->
             <!-- <v-btn prepend-icon="mdi-earth" color="success" class="mt-3" block>
                 Community
             </v-btn> -->
@@ -59,7 +59,7 @@ import { ref } from 'vue'
 import { useDisplay } from 'vuetify'
 import AIChatbot from './AIChatbot.vue';
 const drawer = ref(true)
-const rail = ref(true)
+const rail = ref(false)
 const { mobile } = useDisplay();
 watch(mobile, (isMobile) => {
     if (isMobile) {
@@ -71,7 +71,7 @@ watch(mobile, (isMobile) => {
     }
 })
 const menu = [
-    { item: 'Introduction', link: '/lessons/Introduction', collapse: '', target: '', submenu: [] },
+    { item: 'Introduction', link: '/lessons/Introduction', collapse: 'collapse', target: 'introduction', submenu: [] },
     {
         item: 'Writing System', link: '', collapse: 'collapse', target: 'writingsystems',
         submenu: [
@@ -134,7 +134,7 @@ const menu = [
         ]
     },
     {
-        item: 'W-H Questions', link: '', collapse: 'collapse', target: 'wh_questions', submenu: [
+        item: 'Questions', link: '', collapse: 'collapse', target: 'wh_questions', submenu: [
             { item: 'Introduction', link: '/lessons/questions/Introduction' },
             { item: 'What', link: '/lessons/questions/What' },
             { item: 'When', link: '/lessons/questions/When' },
@@ -150,10 +150,18 @@ const menu = [
             { item: 'Occupations', link: '/lessons/vocabularies/Occupation' },
             { item: 'Institutions', link: '/lessons/vocabularies/Institutions' },
             { item: 'Family', link: '/lessons/vocabularies/Family' },
+            { item: 'Places', link: '/lessons/vocabularies/Places' },
         ]
     },
     {
-        item: 'Kanji List', link: '/kanji/KanjiList', collapse: 'collapse', target: 'vocabularies', submenu: []
+        item: 'Pronouns', link: '/lessons/pronouns/Existential', collapse: 'collapse', target: 'pronouns', submenu: []
+    },
+    {
+        item: 'Verb List', link: '/verbs/VerbList', collapse: '', target: '', submenu: []
+    },
+    
+    {
+        item: 'Kanji List', link: '/kanji/KanjiList', collapse: 'collapse', target: 'kanjilist', submenu: []
     },
 ]
 const exercises = [

@@ -64,6 +64,7 @@ declare module 'vue-router/auto-routes' {
     '/lessons/particles/Particle_No': RouteRecordInfo<'/lessons/particles/Particle_No', '/lessons/particles/Particle_No', Record<never, never>, Record<never, never>>,
     '/lessons/particles/Particle_To': RouteRecordInfo<'/lessons/particles/Particle_To', '/lessons/particles/Particle_To', Record<never, never>, Record<never, never>>,
     '/lessons/particles/Particle_Wo': RouteRecordInfo<'/lessons/particles/Particle_Wo', '/lessons/particles/Particle_Wo', Record<never, never>, Record<never, never>>,
+    '/lessons/pronouns/Existential': RouteRecordInfo<'/lessons/pronouns/Existential', '/lessons/pronouns/Existential', Record<never, never>, Record<never, never>>,
     '/lessons/questions/How': RouteRecordInfo<'/lessons/questions/How', '/lessons/questions/How', Record<never, never>, Record<never, never>>,
     '/lessons/questions/Introduction': RouteRecordInfo<'/lessons/questions/Introduction', '/lessons/questions/Introduction', Record<never, never>, Record<never, never>>,
     '/lessons/questions/What': RouteRecordInfo<'/lessons/questions/What', '/lessons/questions/What', Record<never, never>, Record<never, never>>,
@@ -75,9 +76,11 @@ declare module 'vue-router/auto-routes' {
     '/lessons/vocabularies/Family': RouteRecordInfo<'/lessons/vocabularies/Family', '/lessons/vocabularies/Family', Record<never, never>, Record<never, never>>,
     '/lessons/vocabularies/Institutions': RouteRecordInfo<'/lessons/vocabularies/Institutions', '/lessons/vocabularies/Institutions', Record<never, never>, Record<never, never>>,
     '/lessons/vocabularies/Occupation': RouteRecordInfo<'/lessons/vocabularies/Occupation', '/lessons/vocabularies/Occupation', Record<never, never>, Record<never, never>>,
+    '/lessons/vocabularies/Places': RouteRecordInfo<'/lessons/vocabularies/Places', '/lessons/vocabularies/Places', Record<never, never>, Record<never, never>>,
     '/lessons/writingsystem/Hiragana': RouteRecordInfo<'/lessons/writingsystem/Hiragana', '/lessons/writingsystem/Hiragana', Record<never, never>, Record<never, never>>,
     '/lessons/writingsystem/Kanji': RouteRecordInfo<'/lessons/writingsystem/Kanji', '/lessons/writingsystem/Kanji', Record<never, never>, Record<never, never>>,
     '/lessons/writingsystem/Katakana': RouteRecordInfo<'/lessons/writingsystem/Katakana', '/lessons/writingsystem/Katakana', Record<never, never>, Record<never, never>>,
     '/mocktest/MockTest': RouteRecordInfo<'/mocktest/MockTest', '/mocktest/MockTest', Record<never, never>, Record<never, never>>,
+    '/verbs/VerbList': RouteRecordInfo<'/verbs/VerbList', '/verbs/VerbList', Record<never, never>, Record<never, never>>,
   }
 }
